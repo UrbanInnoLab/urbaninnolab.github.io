@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urban Inno Lab · 도시혁신연구실</title>
+<meta name="description" content="Urban Inno Lab (도시혁신연구실), Department of Urban Planning, Gachon University. Professor Sanghoon Jung.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b1d21; --sub:#5b616b; --line:#e3e5e8; --bg:#ffffff; --soft:#f5f6f4;
+  --accent:#c2462b; --head:52px;
+  --sans:"Inter","Noto Sans KR",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--head)}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+
+/* ---------- header: one thin line ---------- */
+header{position:sticky;top:0;z-index:20;height:var(--head);background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{height:100%;max-width:1440px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;white-space:nowrap}
+.brand b{font-weight:600;letter-spacing:-.01em;font-size:17px}
+.brand b i{font-style:normal;color:var(--accent)}
+.brand span{font-size:13px;color:var(--sub)}
+nav{display:flex;gap:22px;font-size:14px}
+nav a{text-decoration:none;color:var(--sub)}
+nav a:hover{color:var(--ink)}
+.menu-btn{display:none;background:none;border:0;font-size:22px;cursor:pointer}
+
+/* ---------- hero: research areas fill the first screen ---------- */
+.areas{height:calc(100vh - var(--head));min-height:560px;max-height:980px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:var(--line)}
+.tile{position:relative;overflow:hidden;background:#fff;text-decoration:none;color:#fff}
+.tile .ph{position:absolute;inset:0;transition:transform .8s ease,opacity .6s ease}
+.tile .ph img{width:100%;height:100%;object-fit:cover}
+.tile .ph.alt{opacity:0}
+.tile:hover .ph{transform:scale(1.03)}
+.tile:hover .ph.alt{opacity:1}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(15,17,20,.78) 100%);pointer-events:none}
+.cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:22px 26px 20px}
+.cap .no{font-size:12px;letter-spacing:.14em;opacity:.85}
+.cap h2{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1.25;margin:4px 0 2px}
+.cap .en{font-size:14px;opacity:.9}
+.cap .kw{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.cap .kw span{font-size:11.5px;border:1px solid rgba(255,255,255,.55);padding:1px 8px;border-radius:20px}
+.cap .more{position:absolute;right:24px;bottom:22px;font-size:13px;opacity:0;transform:translateX(-6px);transition:.3s}
+.tile:hover .cap .more{opacity:1;transform:none}
+
+/* ---------- sections ---------- */
+section{padding:84px 24px}
+.wrap{max-width:1180px;margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:.16em;color:var(--accent);font-weight:600;text-transform:uppercase}
+h3.title{font-size:28px;font-weight:700;letter-spacing:-.02em;margin:6px 0 28px}
+.lead{font-size:17px;color:#33373d;max-width:860px}
+.soft{background:var(--soft)}
+
+/* mission */
+.mission{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+.pillars{display:grid;gap:14px}
+.pillars div{border-left:3px solid var(--accent);padding:4px 0 4px 16px}
+.pillars b{display:block;font-size:16px}
+.pillars span{color:var(--sub);font-size:14px}
+
+/* research detail */
+.rblock{display:grid;grid-template-columns:1.15fr 1fr;gap:44px;padding:52px 0;border-top:1px solid var(--line)}
+.rblock:first-of-type{border-top:0;padding-top:8px}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-content:start}
+.gal figure{background:#fff;border:1px solid var(--line);cursor:zoom-in;overflow:hidden}
+.gal figure:first-child{grid-column:1/-1}
+.gal img{width:100%;height:220px;object-fit:contain;background:#fff}
+.gal figure:first-child img{height:auto;max-height:340px}
+.gal.two figure:first-child{grid-column:auto}
+.gal.two img,.gal.two figure:first-child img{height:300px;max-height:none}
+.gal figcaption{font-size:11.5px;color:var(--sub);padding:6px 8px;border-top:1px solid var(--line);background:#fff}
+.rtext .no{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:600}
+.rtext h4{font-size:22px;letter-spacing:-.02em;margin:4px 0 0}
+.rtext .en{color:var(--sub);font-size:14px;margin-bottom:14px}
+.rtext p{color:#33373d;margin-bottom:18px}
+.plist{list-style:none;border-top:1px solid var(--line)}
+.plist li{padding:10px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.5}
+.plist .y{display:inline-block;width:44px;color:var(--accent);font-weight:600}
+.plist em{color:var(--sub)}
+
+/* publications */
+.pubgroup{margin-bottom:36px}
+.pubgroup h5{font-size:14px;font-weight:600;color:var(--sub);margin-bottom:8px;letter-spacing:.02em}
+.pubs{list-style:none}
+.pubs li{display:grid;grid-template-columns:56px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.55}
+.pubs .y{color:var(--accent);font-weight:600}
+.pubs .tag{font-size:11px;color:var(--sub);border:1px solid var(--line);border-radius:20px;padding:1px 9px;align-self:start;white-space:nowrap}
+.pubs em{color:var(--sub);font-style:italic}
+
+/* projects */
+.proj{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.proj figure{background:#fff;border:1px solid var(--line);cursor:zoom-in}
+.proj .im{aspect-ratio:4/3;overflow:hidden;background:#fff}
+.proj img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.proj figure:hover img{transform:scale(1.04)}
+.proj figcaption{padding:10px 12px 12px}
+.proj b{display:block;font-size:14px;line-height:1.4;font-weight:600}
+.proj span{font-size:12px;color:var(--sub)}
+.morelist{margin-top:28px;columns:2;column-gap:40px;font-size:13.5px;color:#33373d}
+.morelist li{break-inside:avoid;list-style:none;padding:6px 0;border-bottom:1px dashed var(--line)}
+.morelist span{color:var(--sub)}
+
+/* director */
+.dir{display:grid;grid-template-columns:280px 1fr;gap:48px}
+.dir .portrait{width:200px;aspect-ratio:3/4;object-fit:cover;margin-bottom:18px;border:1px solid var(--line)}
+.dir .card h4{font-size:24px;letter-spacing:-.02em}
+.dir .card .en{color:var(--sub);margin-bottom:14px}
+.dir .card p{font-size:14px;color:#33373d}
+.cv{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.cv h5{font-size:13px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.cv ul{list-style:none;margin-bottom:24px}
+.cv li{display:grid;grid-template-columns:96px 1fr;gap:10px;font-size:14px;padding:7px 0;border-bottom:1px solid var(--line)}
+.cv li span:first-child{color:var(--sub);font-size:13px}
+
+/* join */
+.join{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.join .box{border:1px solid var(--line);background:#fff;padding:26px}
+.join .box div{display:flex;gap:12px;padding:6px 0;font-size:14px}
+.join .box div span:first-child{width:56px;color:var(--sub)}
+
+footer{border-top:1px solid var(--line);padding:28px 24px;font-size:13px;color:var(--sub)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(10,11,13,.9);display:none;align-items:center;justify-content:center;z-index:50;padding:40px;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:100%;background:#fff}
+.lb p{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:#ddd;font-size:13px}
+
+@media (max-width:900px){
+  nav{display:none;position:absolute;top:var(--head);left:0;right:0;background:#fff;flex-direction:column;gap:0;border-bottom:1px solid var(--line)}
+  nav.open{display:flex}
+  nav a{padding:12px 24px;border-top:1px solid var(--line)}
+  .menu-btn{display:block}
+  .brand span{display:none}
+  .areas{height:auto;max-height:none;grid-template-columns:1fr;grid-template-rows:none}
+  .tile{height:62vw;min-height:250px}
+  .cap h2{font-size:20px}
+  .cap .more{display:none}
+  .mission,.rblock,.dir,.cv,.join{grid-template-columns:1fr;gap:28px}
+  .proj{grid-template-columns:1fr 1fr}
+  .morelist{columns:1}
+  .pubs li{grid-template-columns:44px 1fr}
+  .pubs .tag{display:none}
+  section{padding:60px 20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#top"><b>Urban <i>Inno</i> Lab</b><span>도시혁신연구실 · 가천대학교 도시계획전공</span></a>
+    <button class="menu-btn" aria-label="메뉴" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+    <nav>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#professor">Professor</a>
+      <a href="#join">Join Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= FIRST SCREEN: 4 RESEARCH AREAS ================= -->
+<main id="top" class="areas" aria-label="Research areas">
+  <a class="tile" href="#r1">
+    <div class="ph"><img src="img/r2a.jpg" alt="지역별 지식재산 출원 분포" style="object-position:center 35%"></div>
+    <div class="ph alt"><img src="img/r2b.jpg" alt="지식기반서비스업 LISA 군집" style="object-position:center 40%"></div>
+    <div class="cap">
+      <div class="no">01</div>
+      <h2>지식경제와 지역 산업혁신</h2>
+      <div class="en">Knowledge Economy &amp; Regional Industrial Innovation</div>
+      <div class="kw"><span>지방도시</span><span>Industry 4.0</span><span>지식기반산업</span><span>승수효과 유출</span><span>K-USQI</span></div>
+      <div class="more">논문 보기 →</div>
+    </div>
+  </a>
+  <a class="tile" href="#r2">
+    <div class="ph"><img src="img/r3a.jpg" alt="호치민시 디벨로퍼 유형별 아파트 가격 분포" style="object-position:center 45%"></div>
+    <div class="ph alt"><img src="img/r3b.jpg" alt="서울 외국인 거주 패턴" style="object-position:center 30%"></div>
+    <div class="cap">
+      <div class="no">02</div>
+      <h2>주택 · 국제 · 도시서비스</h2>
+      <div class="en">Housing, International Urbanism &amp; Urban Services</div>
+      <div class="kw"><span>Ho Chi Minh City</span><span>해외 개발</span><span>외국인 거주지</span><span>생활환경</span></div>
+      <div class="more">논문 보기 →</div>
+    </div>
+  </a>
+  <a class="tile" href="#r3">
+    <div class="ph"><img src="img/r1h.jpg" alt="분당 신도시 중심축 계획안 비교" style="object-position:center 40%"></div>
+    <div class="ph alt"><img src="img/r1b.jpg" alt="커뮤니티 코리더 다이어그램"></div>
+    <div class="cap">
+      <div class="no">03</div>
+      <h2>한국 도시계획 · 설계사</h2>
+      <div class="en">History of Korean Urban Planning &amp; Design</div>
+      <div class="kw"><span>HURPI</span><span>중심선형축</span><span>커뮤니티 코리더</span><span>토지구획정리</span></div>
+      <div class="more">논문 보기 →</div>
+    </div>
+  </a>
+  <a class="tile" href="#r4">
+    <div class="ph"><img src="img/r4a.jpg" alt="생성형 AI 도시설계 이미지"></div>
+    <div class="ph alt"><img src="img/r4b.jpg" alt="생성형 AI 지속가능 도시설계 평가"></div>
+    <div class="cap">
+      <div class="no">04</div>
+      <h2>AI와 도시계획</h2>
+      <div class="en">AI in Urban Planning</div>
+      <div class="kw"><span>Spatial illiteracy</span><span>Morphological bias</span><span>Human–AI workflow</span><span>설계교육</span></div>
+      <div class="more">논문 보기 →</div>
+    </div>
+  </a>
+</main>
+
+<!-- ================= MISSION ================= -->
+<section>
+  <div class="wrap mission">
+    <div>
+      <div class="eyebrow">About the Lab</div>
+      <h3 class="title">새로운 도시 현상의 동인을 묻고, 체계적인 방법으로 설명합니다</h3>
+      <p class="lead">도시혁신연구실은 도시에서 새롭게 나타나는 현상을 관찰하고, 그 배경에 있는 경제적·사회적 동인을 공간 데이터와 역사 자료로 분석합니다. 연구의 결과는 실제 계획과 정책 자문으로 이어집니다.</p>
+    </div>
+    <div class="pillars">
+      <div><b>Evidence-based Planning</b><span>증거 기반 도시계획 · GIS와 공간계량 분석</span></div>
+      <div><b>Innovative Strategy</b><span>혁신적 도시개발 전략 · 산업공간과 신도시 계획 실무</span></div>
+      <div><b>History as Method</b><span>한국 도시계획·설계 제도와 모델의 형성 과정 연구</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH DETAIL ================= -->
+<section id="research" class="soft">
+  <div class="wrap">
+    <div class="eyebrow">Research</div>
+    <h3 class="title">연구 분야</h3>
+
+    <article class="rblock" id="r1">
+      <div class="gal">
+        <figure><img src="img/r2a.jpg" alt=""><figcaption>지역별 지식재산 출원의 공간 분포 · 지역연구 (2023)</figcaption></figure>
+        <figure><img src="img/r2b.jpg" alt=""><figcaption>지식기반서비스업 LISA 군집 · Land Use Policy (2020)</figcaption></figure>
+        <figure><img src="img/r2c.jpg" alt=""><figcaption>수도권 지식기반서비스업 고용 변화 · Land Use Policy (2020)</figcaption></figure>
+      </div>
+      <div class="rtext">
+        <div class="no">01</div>
+        <h4>지식경제와 지역 산업혁신</h4>
+        <div class="en">Knowledge Economy &amp; Regional Industrial Innovation</div>
+        <p>지식기반산업과 4차 산업혁명 관련 산업이 어디에 모이고, 왜 그곳인지를 묻습니다. 특히 비수도권 지방도시의 산업 전환 경로와 그 한계에 주목합니다. 현재 한국연구재단 과제로 지역 고용 성장이 인구 유입으로 이어지지 못하는 승수효과 유출 현상과, 이를 조절하는 도시 서비스 질 지수(K-USQI)를 연구하고 있습니다.</p>
+        <ul class="plist">
+          <li><span class="y">2025–</span>지역 고용 성장의 인구 유입 연계성과 도시 서비스 질의 조절효과: 승수효과 유출이론을 중심으로. <em>한국연구재단 연구과제</em></li>
+          <li><span class="y">2026</span>The geography of Industry 4.0 in non-capital areas of South Korea: dualistic pathways of industrial transformation in peripheral regions. <em>International Journal of Urban Sciences</em></li>
+          <li><span class="y">2023</span>지역별 지식재산 출원의 지리적 패턴 분석. <em>지역연구</em> 39(2)</li>
+          <li><span class="y">2020</span>Industrial land use planning and the growth of knowledge industry: location pattern of knowledge-intensive services and their determinants in the Seoul metropolitan area. <em>Land Use Policy</em> 95</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="rblock" id="r2">
+      <div class="gal two">
+        <figure><img src="img/r3a.jpg" alt=""><figcaption>호치민시 디벨로퍼 유형별 아파트 가격 분포</figcaption></figure>
+        <figure><img src="img/r3b.jpg" alt=""><figcaption>서울 외국인 거주 패턴 · Sustainable Cities and Society (2019)</figcaption></figure>
+      </div>
+      <div class="rtext">
+        <div class="no">02</div>
+        <h4>주택 · 국제 · 도시서비스</h4>
+        <div class="en">Housing, International Urbanism &amp; Urban Services</div>
+        <p>베트남 호치민시 주택시장의 역설과 한국 디벨로퍼의 해외 대규모 개발, 서울의 외국인 거주 분화를 다룹니다. 육아친화적 주거환경, 범죄예방 환경설계 등 일상의 도시 서비스와 생활환경도 함께 연구합니다.</p>
+        <ul class="plist">
+          <li><span class="y">2026</span>An affordable yet expensive city: explaining Vietnam's housing paradox through informality and upgrading. <em>Cities</em> 179</li>
+          <li><span class="y">2023</span>육아친화적 주거환경의 특성. <em>도시부동산연구</em> 14(1)</li>
+          <li><span class="y">2019</span>Comparative analysis of residential patterns of foreigners from rich and poor countries in Seoul. <em>Sustainable Cities and Society</em></li>
+          <li><span class="y">2017</span>Korean developers in Vietnam: the mechanism of transnational large-scale property development and its planning. <em>Sustainability</em> 9</li>
+          <li><span class="y">2016</span>Effect of crime prevention through environmental design (CPTED) measures on active living and fear of crime. <em>Sustainability</em> 8</li>
+          <li><span class="y">2013</span>The pattern of foreign property investment in Vietnam: the apartment market in Ho Chi Minh City. <em>Habitat International</em> 39</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="rblock" id="r3">
+      <div class="gal">
+        <figure><img src="img/r1a.jpg" alt=""><figcaption>분당 신도시 중심축의 초기안과 최종안 · Planning Perspectives (2024)</figcaption></figure>
+        <figure><img src="img/r1b.jpg" alt=""><figcaption>커뮤니티 코리더 개념도 · Planning Perspectives (2024)</figcaption></figure>
+        <figure><img src="img/r1c.jpg" alt=""><figcaption>학교 중심 커뮤니티 코리더 계획 · JAABE (2025)</figcaption></figure>
+      </div>
+      <div class="rtext">
+        <div class="no">03</div>
+        <h4>한국 도시계획 · 설계사</h4>
+        <div class="en">History of Korean Urban Planning &amp; Design</div>
+        <p>1960년대 도시및지역계획연구소(HURPI)에서 시작된 한국 도시계획·설계 체계의 형성 과정을 추적합니다. 최소주거 개념, 남서울 계획, 토지구획정리 제도가 이후 신도시의 중심선형축과 커뮤니티 공간으로 이어지는 계보를 분석합니다.</p>
+        <ul class="plist">
+          <li><span class="y">2025</span>Integrating schools as community hubs: planning strategies and implementation challenges in South Korean new towns. <em>Journal of Asian Architecture and Building Engineering</em></li>
+          <li><span class="y">2024</span>From HURPI to community corridor: the evolution of the central linear axis in South Korean new towns. <em>Planning Perspectives</em> 39(4)</li>
+          <li><span class="y">2016</span>The minimum dwelling approach by HURPI of South Korea in the 1960s. <em>The Journal of Architecture</em> 21(2)</li>
+          <li><span class="y">2015</span>신제도주의 관점에서 본 서울과 도쿄 대도시권의 1960~1970년대 토지구획정리 제도 분석. <em>국토연구</em> 86</li>
+          <li><span class="y">2014</span>Oswald Nagler, HURPI and the formation of urban planning and design in South Korea. <em>Journal of Urban History</em> 40(3)</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="rblock" id="r4">
+      <div class="gal">
+        <figure><img src="img/r4a.jpg" alt=""><figcaption>생성형 AI가 만든 지속가능 도시 이미지 · Sustainability (2026)</figcaption></figure>
+        <figure><img src="img/r4b.jpg" alt=""><figcaption>시각적 표현과 공간 구조의 괴리</figcaption></figure>
+        <figure><img src="img/r4c.jpg" alt=""><figcaption>보행·대중교통 원칙의 이미지 구현</figcaption></figure>
+      </div>
+      <div class="rtext">
+        <div class="no">04</div>
+        <h4>AI와 도시계획</h4>
+        <div class="en">AI in Urban Planning</div>
+        <p>생성형 AI가 지속가능한 도시설계 원칙을 이미지로 어떻게 표현하고, 공간 구조의 차원에서 무엇을 놓치는지 평가합니다. 프롬프트 최적화를 넘어 인간–AI 워크플로 설계의 관점에서 도시계획·설계 교육을 재구성합니다.</p>
+        <ul class="plist">
+          <li><span class="y">2026</span>From prompt optimisation to workflow architecture: a comparative study of human–AI workflow systems in generative urban design. <em>Systems</em> 14(7)</li>
+          <li><span class="y">2026</span>Visually sustainable but spatially broken? A two-level assessment of how generative AI encodes sustainable urban design principles. <em>Sustainability</em> 18(6)</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= PUBLICATIONS ================= -->
+<section id="publications">
+  <div class="wrap">
+    <div class="eyebrow">Publications</div>
+    <h3 class="title">논문 및 저서</h3>
+
+    <div class="pubgroup">
+      <h5>International Journals</h5>
+      <ul class="pubs">
+        <li><span class="y">2026</span><span>Jung, S., &amp; Hong, N. The geography of Industry 4.0 in non-capital areas of South Korea: dualistic pathways of industrial transformation in peripheral regions. <em>International Journal of Urban Sciences</em>, 1–27.</span><span class="tag">01</span></li>
+        <li><span class="y">2026</span><span>Huynh, D., Huynh, K., &amp; Jung, S. An affordable yet expensive city: explaining Vietnam's housing paradox through informality and upgrading. <em>Cities</em>, 179, 107647.</span><span class="tag">02</span></li>
+        <li><span class="y">2026</span><span>Jung, S. From prompt optimisation to workflow architecture: a comparative study of human–AI workflow systems in generative urban design. <em>Systems</em>, 14(7), 771.</span><span class="tag">04</span></li>
+        <li><span class="y">2026</span><span>Jung, S. Visually sustainable but spatially broken? A two-level assessment of how generative AI encodes sustainable urban design principles. <em>Sustainability</em>, 18(6), 2943.</span><span class="tag">04</span></li>
+        <li><span class="y">2025</span><span>Hong, N., &amp; Jung, S. Integrating schools as community hubs: planning strategies and implementation challenges in South Korean new towns. <em>Journal of Asian Architecture and Building Engineering</em>, 1–14.</span><span class="tag">03</span></li>
+        <li><span class="y">2024</span><span>Jung, S., &amp; Hong, N. From HURPI to community corridor: the evolution of the central linear axis in South Korean new towns. <em>Planning Perspectives</em>, 39(4), 815–833.</span><span class="tag">03</span></li>
+        <li><span class="y">2020</span><span>Lee, J., &amp; Jung, S. Industrial land use planning and the growth of knowledge industry: location pattern of knowledge-intensive services and their determinants in the Seoul metropolitan area. <em>Land Use Policy</em>, 95, 104632.</span><span class="tag">01</span></li>
+        <li><span class="y">2019</span><span>Jeon, G., &amp; Jung, S. Comparative analysis of residential patterns of foreigners from rich and poor countries in Seoul. <em>Sustainable Cities and Society</em>, 101470.</span><span class="tag">02</span></li>
+        <li><span class="y">2017</span><span>Jung, S., &amp; Lee, J. S. Korean developers in Vietnam: the mechanism of transnational large-scale property development and its planning. <em>Sustainability</em>, 9, 748.</span><span class="tag">02</span></li>
+        <li><span class="y">2016</span><span>Jung, S., Kwon, Y., &amp; Rowe, P. G. The minimum dwelling approach by the Housing, Urban and Regional Planning Institute (HURPI) of South Korea in the 1960s. <em>The Journal of Architecture</em>, 21(2), 181–209.</span><span class="tag">03</span></li>
+        <li><span class="y">2016</span><span>Lee, J. S., Park, S., &amp; Jung, S. Effect of crime prevention through environmental design (CPTED) measures on active living and fear of crime. <em>Sustainability</em>, 8, 872.</span><span class="tag">02</span></li>
+        <li><span class="y">2014</span><span>Jung, S. Oswald Nagler, HURPI and the formation of urban planning and design in South Korea: the South Seoul Plan by HURPI and the Mok-dong Plan. <em>Journal of Urban History</em>, 40(3), 585–605.</span><span class="tag">03</span></li>
+        <li><span class="y">2013</span><span>Jung, S., Huynh, D., &amp; Rowe, P. G. The pattern of foreign property investment in Vietnam: the apartment market in Ho Chi Minh City. <em>Habitat International</em>, 39, 105–113.</span><span class="tag">02</span></li>
+      </ul>
+    </div>
+
+    <div class="pubgroup">
+      <h5>Domestic Journals</h5>
+      <ul class="pubs">
+        <li><span class="y">2023</span><span>신수연, 정상훈. 지역별 지식재산 출원의 지리적 패턴 분석. <em>지역연구</em>, 39(2), 31–46.</span><span class="tag">01</span></li>
+        <li><span class="y">2023</span><span>장형진, 정상훈. 육아친화적 주거환경의 특성. <em>도시부동산연구</em>, 14(1), 61–80.</span><span class="tag">02</span></li>
+        <li><span class="y">2015</span><span>박민규, 강명구, 정상훈. 신제도주의 관점에서 본 서울과 도쿄 대도시권의 1960~1970년대 토지구획정리 제도 분석. <em>국토연구</em>, 86, 161–181.</span><span class="tag">03</span></li>
+        <li><span class="y">2014</span><span>정상훈. 브라질 리우데자네이루의 산타마르타 파벨라 개선사업에 관한 연구. <em>한국도시설계학회지</em>, 15(2), 155–171.</span><span class="tag">02</span></li>
+      </ul>
+    </div>
+
+    <div class="pubgroup">
+      <h5>Books</h5>
+      <ul class="pubs">
+        <li><span class="y">2013</span><span>Rowe, P. G., Kan, H. Y., Guan, C., Hunter, K., Jung, S., Kim, S., Lu, Y., &amp; Song, J. <em>Methodological Notes on the Spatial Analysis of Urban Formation</em>. Harvard University Graduate School of Design.</span><span class="tag">Book</span></li>
+        <li><span class="y">2011</span><span>Rowe, P. G., Kim, S., &amp; Jung, S. <em>A City and Its Stream: The Cheonggyecheon Restoration Project</em>. Seoul Development Institute.</span><span class="tag">Book</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="soft">
+  <div class="wrap">
+    <div class="eyebrow">Projects</div>
+    <h3 class="title">연구 및 계획 프로젝트</h3>
+    <div class="proj">
+      <figure><div class="im"><img src="img/p_dgstadium.jpg" alt=""></div><figcaption><b>서울디지털국가산단 디지털운동장 리모델링 사업계획</b><span>한국산업단지공단 · 2025 · 연구책임</span></figcaption></figure>
+      <figure><div class="im"><img src="img/p_3rdnt.jpg" alt=""></div><figcaption><b>1기 신도시 모니터링을 통한 3기 신도시 고도화</b><span>한국토지주택공사 · 2023–2025 · 분야책임(자족성)</span></figcaption></figure>
+      <figure><div class="im"><img src="img/p_bundang.jpg" alt=""></div><figcaption><b>분당벤처밸리 활성화를 위한 마스터플랜</b><span>성남시 · 2021–2022 · 연구책임</span></figcaption></figure>
+      <figure><div class="im"><img src="img/p_paju.jpg" alt=""></div><figcaption><b>파주출판단지 3단계 기본구상</b><span>2019–2020 · 신도시 계획</span></figcaption></figure>
+      <figure><div class="im"><img src="img/p_multi.jpg" alt=""></div><figcaption><b>미래형 신산업단지의 입체복합 토지이용계획 모의구상</b><span>2019 · 도시분석 및 설계</span></figcaption></figure>
+      <figure><div class="im"><img src="img/p_dongtan.jpg" alt=""></div><figcaption><b>동탄2 신도시 문화디자인밸리 계획 재수립</b><span>2018–2019 · 지구단위계획</span></figcaption></figure>
+      <figure><div class="im"><img src="img/p_seongnam.jpg" alt=""></div><figcaption><b>성남시 산업공간 특화발전 및 연계전략</b><span>성남산업진흥원 · 2018–2019 · 연구책임</span></figcaption></figure>
+      <figure><div class="im"><img src="img/p_olympic.jpg" alt=""></div><figcaption><b>올림픽대로 입체활용 문화플랫폼</b><span>2017 · 도시설계</span></figcaption></figure>
+    </div>
+    <ul class="morelist">
+      <li>수도권 지식기반서비스업 집적지의 도시계획과 산업적 특성의 관계 <span>· 한국연구재단 · 2018–2019 · 연구책임</span></li>
+      <li>외국인 증가에 따른 지역사회의 변화 <span>· 한국연구재단 · 2017–2018 · 연구책임</span></li>
+      <li>광주시 도시재생 전략계획 <span>· 광주시 · 2017–2018 · 연구책임</span></li>
+      <li>4차 산업혁명과 서울디지털산업단지 경쟁력 강화방안 <span>· 한국산업단지공단 · 2017 · 분야책임</span></li>
+      <li>파주출판도시 도시진단 <span>· 출판도시입주기업협의회 · 2018 · 분야책임</span></li>
+      <li>라오스 사바나켓주 지도제작 및 인력양성사업 심층기획조사 <span>· KOICA · 2017–2018</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= DIRECTOR ================= -->
+<section id="professor">
+  <div class="wrap">
+    <div class="eyebrow">Professor</div>
+    <h3 class="title">지도교수</h3>
+    <div class="dir">
+      <div class="card">
+        <img class="portrait" src="img/professor.jpg" alt="정상훈 교수">
+        <h4>정상훈</h4>
+        <div class="en">Sanghoon Jung</div>
+        <p>가천대학교 도시계획전공 부교수<br>Associate Professor, Department of Urban Planning, Gachon University</p>
+        <p style="margin-top:14px;color:var(--sub)">GIS 방법론 · 도시설계 스튜디오 · 도시개발론 · 도시계획개론</p>
+      </div>
+      <div class="cv">
+        <div>
+          <h5>Education</h5>
+          <ul>
+            <li><span>2013</span><span>Harvard University, 박사 (도시계획 및 설계)</span></li>
+            <li><span>2006</span><span>서울대학교, 석사 (도시설계)</span></li>
+            <li><span>2004</span><span>서울대학교, 학사 (지구환경시스템공학)</span></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Career</h5>
+          <ul>
+            <li><span>2014–현재</span><span>가천대학교 도시계획전공 교수</span></li>
+            <li><span>2013–2014</span><span>Research Fellow, Center for Technology and Environment, Harvard University</span></li>
+            <li><span>2010, 2012</span><span>Teaching Fellow, Harvard Graduate School of Design</span></li>
+            <li><span>2006–2008</span><span>한아도시연구소 연구원·팀장</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOIN ================= -->
+<section id="join" class="soft">
+  <div class="wrap join">
+    <div>
+      <div class="eyebrow">Join Us</div>
+      <h3 class="title">학부연구생 · 대학원생 모집</h3>
+      <p class="lead">지방도시와 지역 산업혁신, 주택과 도시서비스, 한국 도시계획·설계사, AI와 도시계획에 관심 있는 학부연구생과 대학원생을 기다립니다. GIS나 통계 경험이 없어도 괜찮습니다. 질문을 오래 붙들 수 있는 사람이면 됩니다.</p>
+    </div>
+    <div class="box">
+      <div><span>연락</span><span>sghnjung@gachon.ac.kr</span></div>
+      <div><span>연구실</span><span>가천대학교 공과대학1관 304A</span></div>
+      <div><span>전화</span><span>031-750-5276</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Urban Inno Lab · 도시혁신연구실 · Department of Urban Planning, Gachon University</span>
+    <span>경기도 성남시 수정구 성남대로 1342 가천대학교</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" onclick="this.classList.remove('on')"><img alt=""><p></p></div>
+<script>
+(function(){
+  var lb=document.getElementById('lb'),li=lb.querySelector('img'),lp=lb.querySelector('p');
+  document.querySelectorAll('.gal figure,.proj figure').forEach(function(f){
+    f.addEventListener('click',function(){
+      li.src=f.querySelector('img').src;
+      var c=f.querySelector('figcaption');lp.textContent=c?c.textContent:'';
+      lb.classList.add('on');
+    });
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on');});
+  document.querySelectorAll('nav a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('nav').classList.remove('open');});});
+})();
+</script>
+</body>
+</html>
